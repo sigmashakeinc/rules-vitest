@@ -5,10 +5,9 @@ rule vitest-warn-mock-clear {
   enabled true
   priority 80
   severity warning
-  ASK write
+  LOG write
   IF path GLOB "**/vitest.config.*" AND content CONTAINS "mockReset: false"
   MESSAGE "If mockReset is false, mocked modules might leak state between tests. Ensure tests do not have cross-dependencies due to shared mock state."
-  PROMPT "Are you explicitly managing mock resets? Not resetting mocks can lead to flaky test suites."
 }
 
 rule vitest-warn-test-timeout {
